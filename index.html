@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゲッターズ佐々木の占い | 3年D組</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 200;
+      background-color: #030303; /* 深い漆黒 */
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .section {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 340px 20px; 
+      position: relative;
+    }
+
+    /* 文字が広がりながら浮かび上がる演出 */
+    .menu-en {
+      font-family: 'Cinzel', serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: #bfa175;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                  transform 1.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                  letter-spacing 2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .menu-ja {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s, 
+                  transform 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
+                  letter-spacing 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+    }
+
+    /* 上品なシャンパンゴールドのグラデーション */
+    .gold-text {
+      background: linear-gradient(135deg, #f5e3ce 0%, #ccaf84 40%, #af9366 70%, #7c623b 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .desc {
+      font-size: 0.95rem;
+      color: #99999f;
+      line-height: 2.2;
+      letter-spacing: 0.08em;
+      margin-bottom: 0; 
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s;
+    }
+
+    /* 極細のゴールドライン */
+    .line {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(191, 161, 117, 0.4), transparent);
+      margin: 20px auto;
+      transition: width 2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+    }
+
+    /* 【変更】注釈エリアも中央に美しく配置 */
+    .disclaimer-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 60px 20px;
+      text-align: center; /* 完全な中央揃えに */
+    }
+
+    .disclaimer-text {
+      font-size: 0.65rem;
+      color: #3d3d40; /* 背景に溶け込む極薄グレー */
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      display: inline-block;
+    }
+
+    /* アニメーション発動時 */
+    .show .menu-en {
+      opacity: 1;
+      transform: translateY(0);
+      letter-spacing: 0.35em;
+    }
+    .show .menu-ja {
+      opacity: 1;
+      transform: translateY(0);
+      letter-spacing: 0.25em;
+    }
+    .show .desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .show .line {
+      width: 120px;
+    }
+
+    /* ─── 【復活】背景の神秘的な光の輪（ゆっくり自動回転） ─── */
+    .section * { position: relative; z-index: 1; }
+    .bg-pattern {
+      position: absolute;
+      border: 1px solid rgba(191, 161, 117, 0.04); /* 繊細で見え隠れする薄さ */
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: spin 80s linear infinite; /* 80秒かけて超低速で優雅に回転 */
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. イントロダクション（光の輪あり） -->
+  <section class="section js-scroll">
+    <p class="menu-en">3-D FORTUNE</p>
+    <h1 class="menu-ja">ゲッターズ佐々木の占い</h1>
+    <div class="line"></div>
+    <p class="desc">日常の喧騒を離れた特別な空間。<br>3年D組が贈る、5つの神秘があなたの未来を映し出す。</p>
+    <!-- 光の輪 -->
+    <div class="bg-pattern" style="width: 450px; height: 450px;"></div>
+  </section>
+
+  <!-- 2. 手相 -->
+  <section class="section js-scroll">
+    <p class="menu-en">PALMISTRY</p>
+    <h1 class="menu-ja"><span class="gold-text">手相</span></h1>
+    <div class="line"></div>
+    <p class="desc">手のひらに深く刻まれた、あなただけの地図。<br>過去の軌跡と、これから訪れる転機を読み解きます。</p>
+  </section>
+
+  <!-- 3. タロット -->
+  <section class="section js-scroll">
+    <p class="menu-en">TAROT CARDS</p>
+    <h1 class="menu-ja"><span class="gold-text">タロット</span></h1>
+    <div class="line"></div>
+    <p class="desc">78枚のカードが織りなす、偶然という名の必然。<br>あなたの心に秘められた、真実の答えを導き出す。</p>
+  </section>
+
+  <!-- 4. 水晶 -->
+  <section class="section js-scroll">
+    <p class="menu-en">CRYSTAL GAZING</p>
+    <h1 class="menu-ja"><span class="gold-text">水晶占い</span></h1>
+    <div class="line"></div>
+    <p class="desc">透明な球体に浮かび上がる、幽玄なる未来の光景。<br>言葉にならぬ運命の予兆を、その目で確かめて。</p>
+  </section>
+
+  <!-- 5. 相性診断 -->
+  <section class="section js-scroll">
+    <p class="menu-en">COMPATIBILITY</p>
+    <h1 class="menu-ja"><span class="gold-text">相性診断</span></h1>
+    <div class="line"></div>
+    <p class="desc">二人の星が交わる、その奇跡の瞬間。<br>友情、あるいは恋。二人の結びつきを紐解く。</p>
+  </section>
+
+  <!-- 6. おみくじ -->
+  <section class="section js-scroll">
+    <p class="menu-en">FORTUNE SLIP</p>
+    <h1 class="menu-ja"><span class="gold-text">おみくじ</span></h1>
+    <div class="line"></div>
+    <p class="desc">日常へ持ち帰る、小さな神託。<br>あなたの今日と明日を照らす、一筋の言の葉。</p>
+  </section>
+
+  <!-- 7. アクセス案内（光の輪あり・中央揃え） -->
+  <section class="section js-scroll">
+    <p class="menu-en">ACCESS</p>
+    <h1 class="menu-ja"><span class="gold-text">湯沢高校 2階 3年D組</span></h1>
+    <div class="line"></div>
+    <p class="desc" style="color: #e4e4e6;">
+      扉を開けた瞬間、日常は終わりを告げる。
+    </p>
+    <!-- 光の輪（イントロより少し大きめで包み込むように） -->
+    <div class="bg-pattern" style="width: 550px; height: 550px;"></div>
+  </section>
+
+  <!-- 8. 注釈（免責事項・中央揃え） -->
+  <div class="disclaimer-container">
+    <p class="disclaimer-text">
+      ※ 当館で提供するすべての占術は、未来の成果を確定・担保するものではありません。あらかじめご了承ください。
+    </p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const sections = document.querySelectorAll('.js-scroll');
+    
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.35 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>

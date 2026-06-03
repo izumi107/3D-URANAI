@@ -19,7 +19,7 @@
     body {
       font-family: 'Noto Serif JP', serif;
       font-weight: 200;
-      background-color: #030303; /* 深い漆黒 */
+      background-color: #030303; 
       color: #ffffff;
       overflow-x: hidden;
     }
@@ -34,11 +34,10 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 340px 20px; /* PCでの圧倒的な余白 */
+      padding: 340px 20px; 
       position: relative;
     }
 
-    /* 文字が広がりながら浮かび上がる演出 */
     .menu-en {
       font-family: 'Cinzel', serif;
       font-weight: 300;
@@ -63,9 +62,10 @@
       transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s, 
                   transform 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s,
                   letter-spacing 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+      /* 【追加】PC・スマホ共通で、タイトル文字は絶対に途中で改行させないお守り */
+      white-space: nowrap; 
     }
 
-    /* 上品なシャンパンゴールドのグラデーション */
     .gold-text {
       background: linear-gradient(135deg, #f5e3ce 0%, #ccaf84 40%, #af9366 70%, #7c623b 100%);
       background-clip: text;
@@ -84,7 +84,6 @@
       transition: opacity 1.8s ease 0.3s, transform 1.8s ease 0.3s;
     }
 
-    /* 極細のゴールドライン */
     .line {
       width: 0;
       height: 1px;
@@ -93,7 +92,6 @@
       transition: width 2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
     }
 
-    /* 注釈エリア */
     .disclaimer-container {
       width: 100%;
       max-width: 900px;
@@ -129,7 +127,6 @@
       width: 120px;
     }
 
-    /* 背景の光の輪 */
     .section * { position: relative; z-index: 1; }
     .bg-pattern {
       position: absolute;
@@ -145,38 +142,37 @@
     }
 
 
-    /* ─── 📱 【追加】スマートフォン用の調整（画面幅768px以下の場合） ─── */
+    /* ─── 📱 【再調整】スマートフォン用の調整 ─── */
     @media (max-width: 768px) {
       .section {
-        /* スマホの画面の高さに合わせた、ちょうどいい余白（上下200px）に縮小 */
-        padding: 200px 24px; 
+        padding: 220px 16px; /* 横の余白を少し広げて文字が入るスペースを確保 */
       }
 
       .menu-ja {
-        /* スマホの横幅でも文字が折り返さず綺麗に収まるサイズに調整 */
-        font-size: 1.7rem; 
-        letter-spacing: 0.12em;
+        /* 【修正】文字サイズを1.7remから「1.45rem」まで攻めて小さくしました */
+        font-size: 1.45rem; 
         margin-bottom: 20px;
       }
 
       .desc {
-        /* スマホで読みやすい文字サイズと行間に調整 */
         font-size: 0.85rem;
         line-height: 2.0;
+        /* スマホで解説文が横にはみ出さないように、適度に自動改行を許可 */
+        white-space: normal; 
       }
 
-      /* アニメーション時の文字の広がり具合もスマホ用に微調整 */
+      /* 【修正】アニメーション時の横への広がり幅を、スマホの画面に収まるサイズに制限 */
       .show .menu-en {
-        letter-spacing: 0.25em;
+        letter-spacing: 0.2em;
       }
       .show .menu-ja {
-        letter-spacing: 0.18em;
+        /* ここが広がりすぎて「占い」がはみ出していたので、上品に収まる値に修正 */
+        letter-spacing: 0.12em; 
       }
       .show .line {
-        width: 80px; /* 線も少し短くしてスマートに */
+        width: 60px; 
       }
 
-      /* 背景の光の輪もスマホの画面からはみ出しすぎないサイズに */
       .section:nth-of-type(1) .bg-pattern {
         width: 280px !important;
         height: 280px !important;

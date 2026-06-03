@@ -24,6 +24,7 @@
       overflow-x: hidden;
     }
 
+    /* ─── 【PCベースの設定】 ─── */
     .section {
       width: 100%;
       max-width: 900px;
@@ -33,7 +34,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 340px 20px; 
+      padding: 340px 20px; /* PCでの圧倒的な余白 */
       position: relative;
     }
 
@@ -92,18 +93,18 @@
       transition: width 2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
     }
 
-    /* 【変更】注釈エリアも中央に美しく配置 */
+    /* 注釈エリア */
     .disclaimer-container {
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
       padding: 0 20px 60px 20px;
-      text-align: center; /* 完全な中央揃えに */
+      text-align: center;
     }
 
     .disclaimer-text {
       font-size: 0.65rem;
-      color: #3d3d40; /* 背景に溶け込む極薄グレー */
+      color: #3d3d40;
       letter-spacing: 0.05em;
       line-height: 1.5;
       display: inline-block;
@@ -128,31 +129,73 @@
       width: 120px;
     }
 
-    /* ─── 【復活】背景の神秘的な光の輪（ゆっくり自動回転） ─── */
+    /* 背景の光の輪 */
     .section * { position: relative; z-index: 1; }
     .bg-pattern {
       position: absolute;
-      border: 1px solid rgba(191, 161, 117, 0.04); /* 繊細で見え隠れする薄さ */
+      border: 1px solid rgba(191, 161, 117, 0.04);
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
-      animation: spin 80s linear infinite; /* 80秒かけて超低速で優雅に回転 */
+      animation: spin 80s linear infinite;
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+
+    /* ─── 📱 【追加】スマートフォン用の調整（画面幅768px以下の場合） ─── */
+    @media (max-width: 768px) {
+      .section {
+        /* スマホの画面の高さに合わせた、ちょうどいい余白（上下200px）に縮小 */
+        padding: 200px 24px; 
+      }
+
+      .menu-ja {
+        /* スマホの横幅でも文字が折り返さず綺麗に収まるサイズに調整 */
+        font-size: 1.7rem; 
+        letter-spacing: 0.12em;
+        margin-bottom: 20px;
+      }
+
+      .desc {
+        /* スマホで読みやすい文字サイズと行間に調整 */
+        font-size: 0.85rem;
+        line-height: 2.0;
+      }
+
+      /* アニメーション時の文字の広がり具合もスマホ用に微調整 */
+      .show .menu-en {
+        letter-spacing: 0.25em;
+      }
+      .show .menu-ja {
+        letter-spacing: 0.18em;
+      }
+      .show .line {
+        width: 80px; /* 線も少し短くしてスマートに */
+      }
+
+      /* 背景の光の輪もスマホの画面からはみ出しすぎないサイズに */
+      .section:nth-of-type(1) .bg-pattern {
+        width: 280px !important;
+        height: 280px !important;
+      }
+      .section:nth-of-type(7) .bg-pattern {
+        width: 320px !important;
+        height: 320px !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- 1. イントロダクション（光の輪あり） -->
+  <!-- 1. イントロダクション -->
   <section class="section js-scroll">
     <p class="menu-en">3-D FORTUNE</p>
     <h1 class="menu-ja">ゲッターズ佐々木の占い</h1>
     <div class="line"></div>
     <p class="desc">日常の喧騒を離れた特別な空間。<br>3年D組が贈る、5つの神秘があなたの未来を映し出す。</p>
-    <!-- 光の輪 -->
     <div class="bg-pattern" style="width: 450px; height: 450px;"></div>
   </section>
 
@@ -196,7 +239,7 @@
     <p class="desc">日常へ持ち帰る、小さな神託。<br>あなたの今日と明日を照らす、一筋の言の葉。</p>
   </section>
 
-  <!-- 7. アクセス案内（光の輪あり・中央揃え） -->
+  <!-- 7. アクセス案内 -->
   <section class="section js-scroll">
     <p class="menu-en">ACCESS</p>
     <h1 class="menu-ja"><span class="gold-text">湯沢高校 2階 3年D組</span></h1>
@@ -204,11 +247,10 @@
     <p class="desc" style="color: #e4e4e6;">
       扉を開けた瞬間、日常は終わりを告げる。
     </p>
-    <!-- 光の輪（イントロより少し大きめで包み込むように） -->
     <div class="bg-pattern" style="width: 550px; height: 550px;"></div>
   </section>
 
-  <!-- 8. 注釈（免責事項・中央揃え） -->
+  <!-- 8. 注釈（免責事項） -->
   <div class="disclaimer-container">
     <p class="disclaimer-text">
       ※ 当館で提供するすべての占術は、未来の成果を確定・担保するものではありません。あらかじめご了承ください。
